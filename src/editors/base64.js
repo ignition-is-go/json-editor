@@ -35,7 +35,7 @@ export class Base64Editor extends AbstractEditor {
     if (this.options.infoText) this.infoButton = this.theme.getInfoButton(this.options.infoText)
 
     /* Input that holds the base64 string */
-    this.input = this.theme.getFormInputField('hidden')
+    this.input = this.theme.getFormInputField('hidden', this)
     this.container.appendChild(this.input)
 
     /* Don't show uploader if this is readonly */
@@ -43,7 +43,7 @@ export class Base64Editor extends AbstractEditor {
       if (!window.FileReader) throw new Error('FileReader required for base64 editor')
 
       /* File uploader */
-      this.uploader = this.theme.getFormInputField('file')
+      this.uploader = this.theme.getFormInputField('file', this)
 
       /* Set attribute of file input field to 'multiple' if: */
       /* 'multiple' key has been set to 'true' in the schema */

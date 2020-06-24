@@ -105,12 +105,12 @@ export class StringEditor extends AbstractEditor {
         if (['button', 'checkbox', 'color', 'date', 'datetime-local', 'email', 'file', 'hidden', 'image', 'month', 'number', 'password', 'radio', 'reset', 'search', 'submit', 'tel', 'text', 'time', 'url', 'week'].includes(this.format)) {
           this.input_type = this.format
         }
-        this.input = this.theme.getFormInputField(this.input_type)
+        this.input = this.theme.getFormInputField(this.input_type, this)
       }
       /* Normal text input */
     } else {
       this.input_type = 'text'
-      this.input = this.theme.getFormInputField(this.input_type)
+      this.input = this.theme.getFormInputField(this.input_type, this)
     }
 
     /* minLength, maxLength, and pattern */

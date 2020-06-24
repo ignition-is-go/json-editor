@@ -11,7 +11,7 @@ export class SignatureEditor extends StringEditor {
 
     if (typeof SignaturePad === 'function') {
       /* Dynamically add the required CSS the first time this editor is used */
-      this.input = this.theme.getFormInputField('hidden')
+      this.input = this.theme.getFormInputField('hidden', this)
       this.container.appendChild(this.input)
 
       /* Required to keep height */

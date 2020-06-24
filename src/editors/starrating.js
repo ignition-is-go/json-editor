@@ -32,7 +32,7 @@ export class StarratingEditor extends StringEditor {
       const id = this.formname + (i + 1)
 
       /* form radio elements */
-      const radioInput = this.theme.getFormInputField('radio')
+      const radioInput = this.theme.getFormInputField('radio', this)
       radioInput.name = `${this.formname}[starrating]`
       radioInput.value = this.enum_values[i]
       radioInput.id = id

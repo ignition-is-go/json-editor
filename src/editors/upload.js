@@ -32,7 +32,7 @@ export class UploadEditor extends AbstractEditor {
     this.options.mime_type = this.options.mime_type ? [].concat(this.options.mime_type) : []
 
     /* Input that holds the base64 string */
-    this.input = this.theme.getFormInputField('hidden')
+    this.input = this.theme.getFormInputField('hidden', this)
     this.container.appendChild(this.input)
 
     /* Don't show uploader if this is readonly */
@@ -40,7 +40,7 @@ export class UploadEditor extends AbstractEditor {
       if (typeof this.options.upload_handler !== 'function') throw new Error('Upload handler required for upload editor')
 
       /* File uploader */
-      this.uploader = this.theme.getFormInputField('file')
+      this.uploader = this.theme.getFormInputField('file', this)
       this.uploader.style.display = 'none'
       if (this.options.mime_type.length) this.uploader.setAttribute('accept', this.options.mime_type)
 
@@ -59,7 +59,7 @@ export class UploadEditor extends AbstractEditor {
         this.browseButton.addEventListener('click', this.clickHandler)
 
         /* Display field */
-        this.fileDisplay = this.theme.getFormInputField('input')
+        this.fileDisplay = this.theme.getFormInputField('input', this)
         this.fileDisplay.setAttribute('readonly', true)
         this.fileDisplay.value = 'No file selected.'
         this.fileDisplay.addEventListener('dblclick', this.clickHandler)

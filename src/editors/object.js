@@ -603,7 +603,7 @@ export class ObjectEditor extends AbstractEditor {
       this.addproperty_list.setAttribute('class', 'property-selector')
       this.addproperty_add = this.getButton('add', 'add', 'add')
       this.addproperty_add.classList.add('json-editor-btntype-add')
-      this.addproperty_input = this.theme.getFormInputField('text')
+      this.addproperty_input = this.theme.getFormInputField('text', this)
       this.addproperty_input.setAttribute('placeholder', 'Property name...')
       this.addproperty_input.style.width = '220px'
       this.addproperty_input.style.marginBottom = '0'

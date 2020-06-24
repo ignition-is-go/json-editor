@@ -166,7 +166,7 @@ export class SelectEditor extends AbstractEditor {
     if (this.options.infoText) this.infoButton = this.theme.getInfoButton(this.options.infoText)
     if (this.options.compact) this.container.classList.add('compact')
 
-    this.input = this.theme.getSelectInput(this.enum_options, false)
+    this.input = this.theme.getSelectInput(this.enum_options, false, this)
     this.theme.setSelectOptions(this.input, this.enum_options, this.enum_display)
 
     if (this.schema.readOnly || this.schema.readonly) {

@@ -108,7 +108,7 @@ export class HiddenEditor extends AbstractEditor {
     }
 
     this.input_type = 'hidden'
-    this.input = this.theme.getFormInputField(this.input_type)
+    this.input = this.theme.getFormInputField(this.input_type, this)
 
     if (this.format) this.input.setAttribute('data-schemaformat', this.format)
 

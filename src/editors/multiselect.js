@@ -74,7 +74,7 @@ export class MultiSelectEditor extends AbstractEditor {
       this.inputs.controlgroup = this.inputs.controls = this.control /* Enable error messages for checkboxes */
     } else {
       this.input_type = 'select'
-      this.input = this.theme.getSelectInput(this.option_keys, true)
+      this.input = this.theme.getSelectInput(this.option_keys, true, this)
       this.theme.setSelectOptions(this.input, this.option_keys, this.option_titles)
       /* this.input.multiple = true; */
       this.input.setAttribute('multiple', 'multiple')
