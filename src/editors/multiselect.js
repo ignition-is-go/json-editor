@@ -62,7 +62,7 @@ export class MultiSelectEditor extends AbstractEditor {
       this.controls = {}
       for (i = 0; i < this.option_keys.length; i++) {
         const id = this.formname + i.toString()
-        this.inputs[this.option_keys[i]] = this.theme.getCheckbox()
+        this.inputs[this.option_keys[i]] = this.theme.getCheckbox(this)
         this.inputs[this.option_keys[i]].id = id
         this.select_options[this.option_keys[i]] = this.inputs[this.option_keys[i]]
         const label = this.theme.getCheckboxLabel(this.option_titles[i])

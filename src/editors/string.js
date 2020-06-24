@@ -85,7 +85,7 @@ export class StringEditor extends AbstractEditor {
       /* Text Area */
       if (this.format === 'textarea') {
         this.input_type = 'textarea'
-        this.input = this.theme.getTextareaInput()
+        this.input = this.theme.getTextareaInput(this)
         /* Range Input */
       } else if (this.format === 'range') {
         this.input_type = 'range'

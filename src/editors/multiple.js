@@ -173,7 +173,7 @@ export class MultipleEditor extends AbstractEditor {
     this.header = this.label = this.theme.getFormInputLabel(this.getTitle(), this.isRequired())
     this.container.appendChild(this.header)
 
-    this.switcher = this.theme.getSwitcher(this.display_text)
+    this.switcher = this.theme.getSwitcher(this.display_text, this)
     container.appendChild(this.switcher)
     this.switcher.addEventListener('change', e => {
       e.preventDefault()

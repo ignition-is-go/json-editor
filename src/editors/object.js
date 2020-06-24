@@ -561,7 +561,7 @@ export class ObjectEditor extends AbstractEditor {
 
       /* Edit JSON modal */
       this.editjson_holder = this.theme.getModal()
-      this.editjson_textarea = this.theme.getTextareaInput()
+      this.editjson_textarea = this.theme.getTextareaInput(this)
       this.editjson_textarea.style.height = '170px'
       this.editjson_textarea.style.width = '300px'
       this.editjson_textarea.style.display = 'block'
@@ -890,7 +890,7 @@ export class ObjectEditor extends AbstractEditor {
   addPropertyCheckbox (key) {
     let labelText
 
-    const checkbox = this.theme.getCheckbox()
+    const checkbox = this.theme.getCheckbox(this)
     checkbox.style.width = 'auto'
 
     if (this.schema.properties[key] && this.schema.properties[key].title) { labelText = this.schema.properties[key].title } else { labelText = key }

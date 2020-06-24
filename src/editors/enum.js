@@ -23,7 +23,7 @@ export class EnumEditor extends AbstractEditor {
     }
 
     /* Switcher */
-    this.switcher = this.theme.getSwitcher(this.select_options)
+    this.switcher = this.theme.getSwitcher(this.select_options, this)
     this.container.appendChild(this.switcher)
 
     /* Display area */
