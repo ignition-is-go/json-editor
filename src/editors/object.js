@@ -552,7 +552,7 @@ export class ObjectEditor extends AbstractEditor {
         this.header.textContent = this.getTitle()
       }
       this.title = this.theme.getHeader(this.header)
-      this.controls = this.theme.getButtonHolder()
+      this.controls = this.theme.getButtonHolder(this)
       this.controls.style.margin = '0 0 0 10px'
 
       this.container.appendChild(this.title)

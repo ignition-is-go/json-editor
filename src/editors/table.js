@@ -70,7 +70,7 @@ export class TableEditor extends ArrayEditor {
     }
 
     this.panel.appendChild(this.table)
-    this.controls = this.theme.getButtonHolder()
+    this.controls = this.theme.getButtonHolder(this)
     this.panel.appendChild(this.controls)
 
     if (this.item_has_child_editors) {
@@ -136,7 +136,7 @@ export class TableEditor extends ArrayEditor {
 
       ret.controls_cell = row.appendChild(this.theme.getTableCell())
       ret.row = row
-      ret.table_controls = this.theme.getButtonHolder()
+      ret.table_controls = this.theme.getButtonHolder(this)
       ret.controls_cell.appendChild(ret.table_controls)
       ret.table_controls.style.margin = 0
       ret.table_controls.style.padding = 0

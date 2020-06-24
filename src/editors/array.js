@@ -150,7 +150,7 @@ export class ArrayEditor extends AbstractEditor {
         this.container.appendChild(this.panel)
         this.row_holder = document.createElement('div')
         this.panel.appendChild(this.row_holder)
-        this.controls = this.theme.getButtonHolder()
+        this.controls = this.theme.getButtonHolder(this)
         if (this.array_controls_top) {
           this.title.appendChild(this.controls)
         } else {
@@ -269,7 +269,7 @@ export class ArrayEditor extends AbstractEditor {
     ret.postBuild()
 
     if (!ret.title_controls) {
-      ret.array_controls = this.theme.getButtonHolder()
+      ret.array_controls = this.theme.getButtonHolder(this)
       holder.appendChild(ret.array_controls)
     }
 
