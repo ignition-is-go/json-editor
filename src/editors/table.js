@@ -2,7 +2,7 @@ import { extend, trigger } from '../utilities.js'
 import { ArrayEditor } from './array.js'
 
 export class TableEditor extends ArrayEditor {
-  register() {
+  register () {
     super.register()
     if (this.rows) {
       for (let i = 0; i < this.rows.length; i++) {
@@ -11,7 +11,7 @@ export class TableEditor extends ArrayEditor {
     }
   }
 
-  unregister() {
+  unregister () {
     super.unregister()
     if (this.rows) {
       for (let i = 0; i < this.rows.length; i++) {
@@ -20,11 +20,11 @@ export class TableEditor extends ArrayEditor {
     }
   }
 
-  getNumColumns() {
+  getNumColumns () {
     return Math.max(Math.min(12, this.width), 3)
   }
 
-  preBuild() {
+  preBuild () {
     const itemSchema = this.jsoneditor.expandRefs(this.schema.items || {})
 
     this.item_title = itemSchema.title || 'row'
@@ -34,7 +34,7 @@ export class TableEditor extends ArrayEditor {
     super.preBuild()
   }
 
-  build() {
+  build () {
     this.table = this.theme.getTable()
     this.container.appendChild(this.table)
     this.thead = this.theme.getTableHead()
@@ -96,20 +96,20 @@ export class TableEditor extends ArrayEditor {
     this.addControls()
   }
 
-  onChildEditorChange(editor) {
+  onChildEditorChange (editor) {
     this.refreshValue()
     super.onChildEditorChange()
   }
 
-  getItemDefault() {
+  getItemDefault () {
     return extend({}, { default: this.item_default }).default
   }
 
-  getItemTitle() {
+  getItemTitle () {
     return this.item_title
   }
 
-  getElementEditor(i, ignore) {
+  getElementEditor (i, ignore) {
     const schemaCopy = extend({}, this.schema.items)
     const editor = this.jsoneditor.getEditorClass(schemaCopy, this.jsoneditor)
     const row = this.row_holder.appendChild(this.theme.getTableRow())
@@ -145,7 +145,7 @@ export class TableEditor extends ArrayEditor {
     return ret
   }
 
-  destroy() {
+  destroy () {
     this.innerHTML = ''
     if (this.title && this.title.parentNode) this.title.parentNode.removeChild(this.title)
     if (this.description && this.description.parentNode) this.description.parentNode.removeChild(this.description)
@@ -158,7 +158,7 @@ export class TableEditor extends ArrayEditor {
     super.destroy()
   }
 
-  setValue(value = [], initial) {
+  setValue (value = [], initial) {
     /* Make sure value has between minItems and maxItems items in it */
     if (this.schema.minItems) {
       while (value.length < this.schema.minItems) {
@@ -204,7 +204,7 @@ export class TableEditor extends ArrayEditor {
     /* TODO: sortable */
   }
 
-  refreshRowButtons() {
+  refreshRowButtons () {
     /* If we currently have minItems items in the array */
     const minItems = this.schema.minItems && this.schema.minItems >= this.rows.length
     /* If we currently have maxItems items in the array */
@@ -306,7 +306,7 @@ export class TableEditor extends ArrayEditor {
     }
   }
 
-  refreshValue() {
+  refreshValue () {
     this.value = []
 
     this.rows.forEach((editor, i) => {
@@ -316,7 +316,7 @@ export class TableEditor extends ArrayEditor {
     this.serialized = JSON.stringify(this.value)
   }
 
-  addRow(value) {
+  addRow (value) {
     const i = this.rows.length
 
     this.rows[i] = this.getElementEditor(i)
@@ -411,7 +411,7 @@ export class TableEditor extends ArrayEditor {
     if (value) this.rows[i].setValue(value)
   }
 
-  addControls() {
+  addControls () {
     this.collapsed = false
     this.toggle_button = this.getButton('', 'collapse', this.translate('button_collapse'))
     this.toggle_button.classList.add('json-editor-btntype-toggle')

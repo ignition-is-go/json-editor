@@ -3,7 +3,7 @@ import { extend, trigger } from '../utilities.js'
 import rules from './array.css.js'
 
 export class ArrayEditor extends AbstractEditor {
-  askConfirmation() {
+  askConfirmation () {
     if (this.jsoneditor.options.prompt_before_delete === true) {
       if (window.confirm(this.translate('button_delete_node_warning')) === false) {
         return false
@@ -12,11 +12,11 @@ export class ArrayEditor extends AbstractEditor {
     return true
   }
 
-  getDefault() {
+  getDefault () {
     return this.schema.default || []
   }
 
-  register() {
+  register () {
     super.register()
     if (this.rows) {
       for (let i = 0; i < this.rows.length; i++) {
@@ -25,7 +25,7 @@ export class ArrayEditor extends AbstractEditor {
     }
   }
 
-  unregister() {
+  unregister () {
     super.unregister()
     if (this.rows) {
       for (let i = 0; i < this.rows.length; i++) {
@@ -34,7 +34,7 @@ export class ArrayEditor extends AbstractEditor {
     }
   }
 
-  getNumColumns() {
+  getNumColumns () {
     const info = this.getItemInfo(0)
     /* Tabs require extra horizontal space */
     if (this.tabs_holder && this.schema.format !== 'tabs-top') {
@@ -43,7 +43,7 @@ export class ArrayEditor extends AbstractEditor {
     return info.width
   }
 
-  enable() {
+  enable () {
     if (!this.always_disabled) {
       if (this.add_row_button) this.add_row_button.disabled = false
       if (this.remove_all_rows_button) this.remove_all_rows_button.disabled = false
@@ -72,7 +72,7 @@ export class ArrayEditor extends AbstractEditor {
     }
   }
 
-  disable(alwaysDisabled) {
+  disable (alwaysDisabled) {
     if (alwaysDisabled) this.always_disabled = true
     if (this.add_row_button) this.add_row_button.disabled = true
     if (this.remove_all_rows_button) this.remove_all_rows_button.disabled = true
@@ -100,7 +100,7 @@ export class ArrayEditor extends AbstractEditor {
     super.disable()
   }
 
-  preBuild() {
+  preBuild () {
     super.preBuild()
 
     this.rows = []
@@ -115,7 +115,7 @@ export class ArrayEditor extends AbstractEditor {
     this.array_controls_top = this.options.array_controls_top || this.jsoneditor.options.array_controls_top
   }
 
-  build() {
+  build () {
     if (!this.options.compact) {
       this.header = document.createElement('label')
       this.header.textContent = this.getTitle()
@@ -176,13 +176,13 @@ export class ArrayEditor extends AbstractEditor {
     this.addControls()
   }
 
-  onChildEditorChange(editor) {
+  onChildEditorChange (editor) {
     this.refreshValue()
     this.refreshTabs(true)
     super.onChildEditorChange(editor)
   }
 
-  getItemTitle() {
+  getItemTitle () {
     if (!this.item_title) {
       if (this.schema.items && !Array.isArray(this.schema.items)) {
         const tmp = this.jsoneditor.expandRefs(this.schema.items)
@@ -194,7 +194,7 @@ export class ArrayEditor extends AbstractEditor {
     return this.cleanText(this.item_title)
   }
 
-  getItemSchema(i) {
+  getItemSchema (i) {
     if (Array.isArray(this.schema.items)) {
       if (i >= this.schema.items.length) {
         if (this.schema.additionalItems === true) {
@@ -212,7 +212,7 @@ export class ArrayEditor extends AbstractEditor {
     }
   }
 
-  getItemInfo(i) {
+  getItemInfo (i) {
     let schema = this.getItemSchema(i)
 
     /* Check if it's cached */
@@ -233,7 +233,7 @@ export class ArrayEditor extends AbstractEditor {
     return this.item_info[stringified]
   }
 
-  getElementEditor(i) {
+  getElementEditor (i) {
     const itemInfo = this.getItemInfo(i)
     let schema = this.getItemSchema(i)
     schema = this.jsoneditor.expandRefs(schema)
@@ -277,7 +277,7 @@ export class ArrayEditor extends AbstractEditor {
     return ret
   }
 
-  destroy() {
+  destroy () {
     this.empty(true)
     if (this.title && this.title.parentNode) this.title.parentNode.removeChild(this.title)
     if (this.description && this.description.parentNode) this.description.parentNode.removeChild(this.description)
@@ -290,7 +290,7 @@ export class ArrayEditor extends AbstractEditor {
     super.destroy()
   }
 
-  empty(hard) {
+  empty (hard) {
     if (!this.rows) return
 
     this.rows.forEach((row, i) => {
@@ -305,7 +305,7 @@ export class ArrayEditor extends AbstractEditor {
     if (hard) this.row_cache = []
   }
 
-  destroyRow(row, hard) {
+  destroyRow (row, hard) {
     const holder = row.container
     if (hard) {
       row.destroy()
@@ -318,14 +318,14 @@ export class ArrayEditor extends AbstractEditor {
     }
   }
 
-  getMax() {
+  getMax () {
     if ((Array.isArray(this.schema.items)) && this.schema.additionalItems === false) {
       return Math.min(this.schema.items.length, this.schema.maxItems || Infinity)
     }
     return this.schema.maxItems || Infinity
   }
 
-  refreshTabs(refreshHeaders) {
+  refreshTabs (refreshHeaders) {
     this.rows.forEach(row => {
       if (!row.tab) return
 
@@ -339,7 +339,7 @@ export class ArrayEditor extends AbstractEditor {
     })
   }
 
-  setValue(value = [], initial) {
+  setValue (value = [], initial) {
     if (!(Array.isArray(value))) value = [value]
 
     const serialized = JSON.stringify(value)
@@ -394,7 +394,7 @@ export class ArrayEditor extends AbstractEditor {
     /* TODO: sortable */
   }
 
-  refreshValue(force) {
+  refreshValue (force) {
     const oldi = this.value ? this.value.length : 0
     /* Get the value for this editor */
     this.value = this.rows.map(editor => editor.getValue())
@@ -473,7 +473,7 @@ export class ArrayEditor extends AbstractEditor {
     }
   }
 
-  addRow(value, initial) {
+  addRow (value, initial) {
     const i = this.rows.length
 
     this.rows[i] = this.getElementEditor(i)
@@ -628,7 +628,7 @@ export class ArrayEditor extends AbstractEditor {
     return this.rows[i]
   }
 
-  addControls() {
+  addControls () {
     this.collapsed = false
     this.toggle_button = this.getButton('', 'collapse', this.translate('button_collapse'))
     this.toggle_button.classList.add('json-editor-btntype-toggle')
@@ -748,7 +748,7 @@ export class ArrayEditor extends AbstractEditor {
     }
   }
 
-  showValidationErrors(errors) {
+  showValidationErrors (errors) {
     /* Get all the errors that pertain to this editor */
     const myErrors = []
     const otherErrors = []
