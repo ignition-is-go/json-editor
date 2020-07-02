@@ -524,7 +524,7 @@ export class AbstractEditor {
   }
 
   getDefault () {
-    if (typeof this.schema.default !== 'undefined') {
+    if (this.jsoneditor.options.apply_schema_defaults && typeof this.schema.default !== 'undefined') {
       return this.schema.default
     }
 

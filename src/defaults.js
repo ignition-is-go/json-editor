@@ -289,7 +289,8 @@ const options = {
   upload,
   prompt_before_delete: true,
   use_default_values: true,
-  max_depth: 0
+  max_depth: 0,
+  apply_schema_defaults: true
 }
 
 /* This assignment was previously in index.js but makes more sense here */

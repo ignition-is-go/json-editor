@@ -286,6 +286,11 @@ Here are all the available options:
     <td>If true default values based on the "type" of the property will be used</td>
     <td><code>true</code></td>
   </tr>
+  <tr>
+    <td>apply_schema_defaults</td>
+    <td>applies schema default value</td>
+    <td><code>true</code></td>
+  </tr>
   </tbody>
 </table>
 
