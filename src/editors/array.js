@@ -13,6 +13,10 @@ export class ArrayEditor extends AbstractEditor {
   }
 
   getDefault () {
+    if (!super.isDefaultRequired()) {
+      return undefined
+    }
+
     return this.schema.default || []
   }
 
@@ -392,6 +396,14 @@ export class ArrayEditor extends AbstractEditor {
     this.onChange()
 
     /* TODO: sortable */
+  }
+
+  getValue () {
+    if (!this.isDefaultRequired() && !this.value?.length) {
+      return undefined
+    }
+
+    return super.getValue()
   }
 
   refreshValue (force) {
